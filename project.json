@@ -1,0 +1,25 @@
+{
+  "overview": "A comprehensive Student Portal with personalized dashboard, study notes library, placement job listings, internship opportunities, student profile, and admin management panel. Built with Motoko backend and React/TypeScript/Tailwind frontend with Internet Identity authentication.",
+  "features": [
+    "Student dashboard with profile card and quick-access tiles",
+    "Study notes library organized by subject with PDF downloads",
+    "Placement job listings with urgency badges and PDF downloads",
+    "Internship listings with filters, stipend info, and application links",
+    "Read-only student profile with academic and contact details",
+    "Admin panel for managing notes, placements, and internships with file uploads",
+    "Role-based access (student/admin) via Internet Identity",
+    "Responsive sidebar navigation with mobile hamburger menu",
+    "Sample content seeded in backend for all sections"
+  ],
+  "category": "productivity",
+  "tags": [
+    "student-portal",
+    "education",
+    "notes",
+    "placements",
+    "internships",
+    "admin-panel",
+    "dashboard"
+  ],
+  "last_updated": "2026-05-02T03:10:38.141Z"
+}

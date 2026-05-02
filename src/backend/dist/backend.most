@@ -1,0 +1,87 @@
+// Version: 1.0.0
+type FileType__684779018 = {#pdf; #text};
+type InternshipId__889363803 = Nat;
+type Internship__979122318 =
+  {
+    applicationLink : Text;
+    company : Text;
+    deadline : Text;
+    description : Text;
+    duration : Text;
+    id : InternshipId__889363803;
+    isActive : Bool;
+    pdfKey : Text;
+    postedDate : Timestamp__301639476;
+    requirements : Text;
+    role : Text;
+    stipend : Text
+  };
+type JobId__339598917 = Nat;
+type Job__138719305 =
+  {
+    company : Text;
+    deadline : Text;
+    description : Text;
+    eligibility : Text;
+    id : JobId__339598917;
+    isActive : Bool;
+    pdfKey : Text;
+    postedDate : Timestamp__301639476;
+    role : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NoteId__167160349 = Nat;
+type Note__1063160515 =
+  {
+    description : Text;
+    fileKey : Text;
+    fileType : FileType__684779018;
+    id : NoteId__167160349;
+    subject : Text;
+    title : Text;
+    uploadDate : Timestamp__301639476;
+    uploadedBy : Principal
+  };
+type Profile__901378260 =
+  {
+    course : Text;
+    email : Text;
+    enrollmentDate : Timestamp__301639476;
+    name : Text;
+    phone : Text;
+    principal : Principal;
+    rollNumber : Text;
+    semester : Nat;
+    year : Nat
+  };
+type Timestamp__301639476 = Int;
+actor {
+  stable internships :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Internship__979122318]];
+      var elementIndex : Nat__490723111
+    };
+  stable jobs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Job__138719305]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextInternshipId : {var value : Nat};
+  stable nextJobId : {var value : Nat};
+  stable nextNoteId : {var value : Nat};
+  stable notes :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Note__1063160515]];
+      var elementIndex : Nat__490723111
+    };
+  stable profiles :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Profile__901378260]];
+      var elementIndex : Nat__490723111
+    }
+};

@@ -1,0 +1,142 @@
+type Timestamp = int;
+type Profile = 
+ record {
+   course: text;
+   email: text;
+   enrollmentDate: Timestamp;
+   name: text;
+   phone: text;
+   "principal": principal;
+   rollNumber: text;
+   semester: nat;
+   year: nat;
+ };
+type NoteId = nat;
+type Note = 
+ record {
+   description: text;
+   fileKey: text;
+   fileType: FileType;
+   id: NoteId;
+   subject: text;
+   title: text;
+   uploadDate: Timestamp;
+   uploadedBy: principal;
+ };
+type JobId = nat;
+type Job = 
+ record {
+   company: text;
+   deadline: text;
+   description: text;
+   eligibility: text;
+   id: JobId;
+   isActive: bool;
+   pdfKey: text;
+   postedDate: Timestamp;
+   role: text;
+ };
+type InternshipId = nat;
+type Internship = 
+ record {
+   applicationLink: text;
+   company: text;
+   deadline: text;
+   description: text;
+   duration: text;
+   id: InternshipId;
+   isActive: bool;
+   pdfKey: text;
+   postedDate: Timestamp;
+   requirements: text;
+   role: text;
+   stipend: text;
+ };
+type FileType = 
+ variant {
+   pdf;
+   "text";
+ };
+service : {
+  addInternship: (input:
+   record {
+     applicationLink: text;
+     company: text;
+     deadline: text;
+     description: text;
+     duration: text;
+     pdfKey: text;
+     requirements: text;
+     role: text;
+     stipend: text;
+   }) -> (nat);
+  addJob: (input:
+   record {
+     company: text;
+     deadline: text;
+     description: text;
+     eligibility: text;
+     pdfKey: text;
+     role: text;
+   }) -> (nat);
+  addNote: (input:
+   record {
+     description: text;
+     fileKey: text;
+     fileType: FileType;
+     subject: text;
+     title: text;
+   }) -> (nat);
+  deleteInternship: (id: InternshipId) -> (bool);
+  deleteJob: (id: JobId) -> (bool);
+  deleteNote: (id: NoteId) -> (bool);
+  getInternshipById: (id: InternshipId) -> (opt Internship) query;
+  getInternships: () -> (vec Internship) query;
+  getJobById: (id: JobId) -> (opt Job) query;
+  getJobs: () -> (vec Job) query;
+  getMyProfile: () -> (Profile) query;
+  getNoteById: (id: NoteId) -> (opt Note) query;
+  getNotes: () -> (vec Note) query;
+  getStudentProfile: (p: principal) -> (opt Profile) query;
+  isAdmin: () -> (bool) query;
+  listStudents: () -> (vec Profile) query;
+  updateInternship: (id: InternshipId, input:
+   record {
+     applicationLink: text;
+     company: text;
+     deadline: text;
+     description: text;
+     duration: text;
+     pdfKey: text;
+     requirements: text;
+     role: text;
+     stipend: text;
+   }) -> (bool);
+  updateJob: (id: JobId, input:
+   record {
+     company: text;
+     deadline: text;
+     description: text;
+     eligibility: text;
+     pdfKey: text;
+     role: text;
+   }) -> (bool);
+  updateMyProfile: (input:
+   record {
+     course: text;
+     email: text;
+     name: text;
+     phone: text;
+     rollNumber: text;
+     semester: nat;
+     year: nat;
+   }) -> ();
+  updateNote: (id: NoteId, input:
+   record {
+     description: text;
+     fileKey: text;
+     fileType: FileType;
+     subject: text;
+     title: text;
+   }) -> (bool);
+}
